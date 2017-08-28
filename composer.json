@@ -1,0 +1,7 @@
+{
+    "name": "bieleckim/tdd-financial-calculations",
+    "require": {},
+    "autoload": {
+        "psr-4": { "TestingFramework\\": "src/TestingFramework/" }
+    }
+}

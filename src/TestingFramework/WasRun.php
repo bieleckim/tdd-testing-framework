@@ -4,17 +4,21 @@ namespace TestingFramework;
 
 class WasRun extends TestCase
 {
-    public $wasRun;
+    public $log;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->wasRun = false;
-        $this->wasSetUp = true;
+        $this->log = 'setUp ';
     }
 
     public function testMethod(): void
     {
-        $this->wasRun = true;
+        $this->log .= 'testMethod ';
+    }
+
+    public function tearDown(): void
+    {
+        $this->log .= 'tearDown ';
     }
 }

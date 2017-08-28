@@ -5,12 +5,10 @@ namespace TestingFramework;
 class TestCase
 {
     public $name;
-    public $wasSetUp;
 
     public function __construct(string $name)
     {
         $this->name = $name;
-        $this->wasSetUp = false;
     }
 
     public function run(): void
@@ -23,6 +21,8 @@ class TestCase
         } catch (\Exception $e) {
             echo $e->getTraceAsString() . PHP_EOL;
         }
+
+        $this->tearDown();
     }
 
     public function assertTrue($expression): bool
@@ -35,6 +35,10 @@ class TestCase
     }
 
     public function setUp(): void
+    {
+    }
+
+    public function tearDown(): void
     {
     }
 }

@@ -11,9 +11,8 @@ class TestCase
         $this->name = $name;
     }
 
-    public function run(): TestResult
+    public function run(TestResult &$result): void
     {
-        $result = new TestResult();
         $result->testStarted();
 
         $this->setUp();
@@ -25,8 +24,6 @@ class TestCase
         }
 
         $this->tearDown();
-
-        return $result;
     }
 
     public function setUp(): void

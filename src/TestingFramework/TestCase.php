@@ -20,9 +20,8 @@ class TestCase
 
         try {
             $this->{$this->name}();
-            echo ".";
         } catch (\Exception $e) {
-            echo $e->getTraceAsString().PHP_EOL;
+            $result->testFailed();
         }
 
         $this->tearDown();

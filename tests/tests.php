@@ -57,14 +57,16 @@ class TestCaseTest extends TestCase
         $this->assertTrue('2 run, 1 failed' === $this->result->summary());
     }
 
+    public function testSuiteBasedOnTestCase(): void
+    {
+        $suite = new TestSuite(WasRun::class);
+        $suite->run($this->result);
+        $this->assertTrue('2 run, 1 failed' === $this->result->summary());
+    }
+
 }
 
-$suite = new TestSuite();
-$suite->add(new TestCaseTest('testTemplateMethod'));
-$suite->add(new TestCaseTest('testResult'));
-$suite->add(new TestCaseTest('testFailedResult'));
-$suite->add(new TestCaseTest('testFailedResultFormatting'));
-$suite->add(new TestCaseTest('testSuite'));
+$suite = new TestSuite(TestCaseTest::class);
 
 $result = new TestResult();
 $suite->run($result);

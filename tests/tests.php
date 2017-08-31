@@ -1,5 +1,6 @@
 <?php
 
+use TestingFramework\SetUpExceptionCase;
 use TestingFramework\TestCase;
 use TestingFramework\TestResult;
 use TestingFramework\WasRun;
@@ -62,6 +63,13 @@ class TestCaseTest extends TestCase
         $suite = new TestSuite(WasRun::class);
         $suite->run($this->result);
         $this->assertTrue('2 run, 1 failed' === $this->result->summary());
+    }
+
+    public function testFailedSetUp(): void
+    {
+        $suite = new TestSuite(SetUpExceptionCase::class);
+        $suite->run($this->result);
+        $this->assertTrue('2 run, 2 failed' === $this->result->summary());
     }
 
 }

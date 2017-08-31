@@ -15,9 +15,8 @@ class TestCase
     {
         $result->testStarted();
 
-        $this->setUp();
-
         try {
+            $this->setUp();
             $this->{$this->name}();
         } catch (\Exception $e) {
             $result->testFailed();

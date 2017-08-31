@@ -1,0 +1,18 @@
+#!/usr/bin/php
+<?php
+
+use TestingFramework\TestResult;
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+$result = new TestResult();
+$iterator = new DirectoryIterator(__DIR__ . '/../tests/');
+foreach ($iterator as $item) {
+    if ($item->isFile()) {
+        require_once $item->getRealPath();
+        $suite = new \TestingFramework\TestSuite($item->getBasename('.php'));
+        $suite->run($result);
+    }
+}
+
+echo $result->summary() . PHP_EOL;

@@ -6,8 +6,6 @@ use TestingFramework\TestResult;
 use TestingFramework\WasRun;
 use TestingFramework\TestSuite;
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 class TestCaseTest extends TestCase
 {
     /**
@@ -73,9 +71,3 @@ class TestCaseTest extends TestCase
     }
 
 }
-
-$suite = new TestSuite(TestCaseTest::class);
-
-$result = new TestResult();
-$suite->run($result);
-echo $result->summary() . PHP_EOL;
